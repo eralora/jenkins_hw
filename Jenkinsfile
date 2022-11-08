@@ -8,10 +8,13 @@ pipeline {
             steps {
                 script {
                     dir("app"){
+                        echo "before npm minor"
                         npm version minor 
+                        echo "after npm minor"
                         def packageJson = readJson file: 'package.json'
                         def version = packageJson.version
                         env.IMAGE_NAME = "$version-$BUILD_NUMBER"
+                        echo "fin"
                     } 
                 }
             }
