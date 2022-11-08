@@ -11,10 +11,10 @@ pipeline {
                         echo "before npm minor"
                         sh "npm version minor" 
                         echo "after npm minor"
-                        #def packageJson = readJson file: 'package.json'
-                        #echo "after readJson"
-                        #def version = packageJson.version
-                        #echo "after version assignment"
+                        # def packageJson = readJson file: 'package.json'
+                        # echo "after readJson"
+                        # def version = packageJson.version
+                        # echo "after version assignment"
                         def version = sh (returnStdout: true, script: "grep 'version' package.json | cut -d '\"' -f4 | tr '\\n' '\\0'")
                         echo "After alternative method"
                         env.IMAGE_NAME = "$version-$BUILD_NUMBER"
