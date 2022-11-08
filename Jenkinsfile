@@ -9,7 +9,7 @@ pipeline {
                 script {
                     dir("app"){
                         echo "before npm minor"
-                        npm version minor 
+                        sh "npm version minor" 
                         echo "after npm minor"
                         def packageJson = readJson file: 'package.json'
                         def version = packageJson.version
