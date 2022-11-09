@@ -25,7 +25,7 @@ pipeline {
                 script {
                     dir("app"){
                         echo "before npm install"
-                        
+                        sh "npm version minor" 
                         echo "after npm install"
                         sh 'npm run test'
                         echo "after run test"
