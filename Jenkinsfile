@@ -25,9 +25,9 @@ pipeline {
                 script {
                     dir("app"){
                         echo "before npm install"
-                        sh "npm install"
+                        sh 'npm install'
                         echo "after npm install"
-                        sh "npm run test"
+                        sh 'npm run test'
                         echo "after run test"
                     }
                     }
