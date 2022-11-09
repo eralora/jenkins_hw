@@ -22,13 +22,13 @@ pipeline {
         stage("Run tests"){
             steps {
                 script {
-                    
+                    dir("app"){
                         echo "before npm install"
                         sh "npm install"
                         echo "after npm install"
                         sh 'npm run test'
                         echo "after run test"
-                    
+                    }
                 }
                     
             }
