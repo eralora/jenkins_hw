@@ -12,11 +12,16 @@ pipeline {
                         sh "npm version minor" 
                         echo "after npm minor"
 
+                        def packageJson = readJSON file: 'package.json'
+                        def version = packageJson.version
+
+                        echo "after assignments"
+                        env.IMAGE_NAME = "$version-$BUILD_NUMBER"
 
                         //def version = sh (returnStdout: true, script: "grep 'version' package.json | cut -d '\"' -f4 | tr '\\n' '\\0'")
                         //echo "After alternative method"
                         //env.IMAGE_NAME = "$version-$BUILD_NUMBER"
-                        //echo "fin"
+                        echo "fin"
                     } 
                 }
             }
