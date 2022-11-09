@@ -11,6 +11,7 @@ pipeline {
                         echo "before npm minor"
                         sh "npm version minor" 
                         echo "after npm minor"
+                        sh "npm install"
                        
                         def version = sh (returnStdout: true, script: "grep 'version' package.json | cut -d '\"' -f4 | tr '\\n' '\\0'")
                         echo "After alternative method"
@@ -25,7 +26,7 @@ pipeline {
                 script {
                     dir("app"){
                         echo "before npm install"
-                        npm version minor 
+                        sh "npm install"
                         echo "after npm install"
                         sh 'npm run test'
                         echo "after run test"
